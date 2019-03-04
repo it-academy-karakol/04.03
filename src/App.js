@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ExampleInput from './ExampleInput/ExampleInput';
+import ExampleControls from './ExampleControls/ExampleControls';
 
 class App extends Component {
+  state = {
+    value: '',
+    hidden: false
+  }
+
+  resetHandler = () => {
+    this.setState({ value: '' });
+  }
+
+  toggleHandler = () => {
+    this.setState({ hidden: !this.state.hidden });
+  }
+
+  changeHandler = event => {
+    this.setState({ value: event.target.value });
+  }
+
   render() {
+    let input = null;
+    if (!this.state.hidden) {
+      input = <ExampleInput value={this.state.value} changeHandler={this.changeHandler} />;
+    }
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <ExampleControls resetHandler={this.resetHandler} toggleHandler={this.toggleHandler} />
+        {input}
       </div>
     );
   }
