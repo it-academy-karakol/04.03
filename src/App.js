@@ -21,7 +21,10 @@ class App extends Component {
     this.setState({ value: event.target.value });
   }
 
+  // Create and Update hook
   render() {
+    console.log('[App.js] render');
+
     let input = null;
     if (!this.state.hidden) {
       input = <ExampleInput value={this.state.value} changeHandler={this.changeHandler} />;
@@ -33,6 +36,31 @@ class App extends Component {
         {input}
       </div>
     );
+  }
+
+  // Create hook
+  // 
+  constructor(props) {
+    super(props);
+
+    console.log('[App.js] constructor');
+  }
+
+  // Create hook
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
+
+  // Update hook
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] shouldComponentUpdate');
+
+    return true;
+  }
+
+  // Update hook
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate');
   }
 }
 
