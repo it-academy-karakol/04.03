@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ExampleInput from './ExampleInput/ExampleInput';
 import ExampleControls from './ExampleControls/ExampleControls';
+import FunctionalStateExample from './FunctionalStateExample/FunctionalStateExample';
 
 class App extends Component {
   state = {
@@ -34,6 +35,7 @@ class App extends Component {
       <div className="App">
         <ExampleControls resetHandler={this.resetHandler} toggleHandler={this.toggleHandler} />
         {input}
+        <FunctionalStateExample />
       </div>
     );
   }
